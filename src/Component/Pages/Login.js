@@ -22,8 +22,8 @@ function Login() {
 
   const sendRequest = async () => {
     try {
-      const response = await fetch("http://192.168.68.58:8080/api/login", {
-        method: "POST",
+      const response = await fetch('http://192.168.1.246:8080/api/login', {
+        method: 'POST',
         body: JSON.stringify(formData),
         headers: {
           "Content-Type": "application/json",
