@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import './login.css';
-import { Link, useNavigate } from 'react-router-dom'; 
-import TextField from '@mui/material/TextField';
-import Logo from '../images/loginlogo.png';
+import React, { useState } from "react";
+import "./login.css";
+import { Link, useNavigate } from "react-router-dom";
+import TextField from "@mui/material/TextField";
+import Logo from "../images/loginlogo.png";
 
 function Login() {
   const navigate = useNavigate(); // Initialize useNavigate
 
-  const [formData, setFormData] = useState({   
-    email: '',
-    password: '',
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
   });
 
   const handleChange = (e) => {
@@ -22,11 +22,11 @@ function Login() {
 
   const sendRequest = async () => {
     try {
-      const response = await fetch('http://192.168.1.246:8080/api/login', {
-        method: 'POST',
+      const response = await fetch("http://192.168.68.58:8080/api/login", {
+        method: "POST",
         body: JSON.stringify(formData),
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       });
 
@@ -35,12 +35,12 @@ function Login() {
       }
 
       const data = await response.json();
-      console.log('Response data:', data);
+      console.log("Response data:", data);
 
       //After login is successful, navigate to the dashboard
-      navigate('/dashboard');
+      navigate("/dashboard");
     } catch (err) {
-      console.error('Error:', err.message);
+      console.error("Error:", err.message);
     }
   };
 
@@ -50,10 +50,10 @@ function Login() {
   };
 
   return (
-    <div className='log-div'>
-      <img src={Logo} alt='' className='loglogo'></img>
+    <div className="log-div">
+      <img src={Logo} alt="" className="loglogo"></img>
       <h2>Log-In</h2>
-      <form className='log-form' onSubmit={handleSubmit}>
+      <form className="log-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <TextField
             id="outlined-multiline-flexible"
@@ -80,19 +80,16 @@ function Login() {
             required
           />
         </div>
-        <button className='log-b' type="submit">Login</button>
+        <button className="log-b" type="submit">
+          Login
+        </button>
       </form>
       <br></br>
-      <Link to='/register' className='reguser'>Not a User? - Sign Up Here</Link>
+      <Link to="/register" className="reguser">
+        Not a User? - Sign Up Here
+      </Link>
     </div>
   );
 }
 
 export default Login;
-
-
-    
-
-      
-        
-       

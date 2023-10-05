@@ -4,7 +4,7 @@ import Register from "./Component/Pages/Register";
 import Home from "./Component/Pages/Home";
 import Dashboard from "./Component/Pages/Dashboard";
 import Navbar from "./Component/Navigation/Navbar";
-import Search from "./Component/Navigation/Search";
+// import Search from "./Component/Navigation/Search";
 import MensFashion from "./Component/Pages/MensFashion";
 
 function App() {
@@ -26,18 +26,16 @@ function App() {
     <div>
       <div className="content"></div>
       <Router>
-        <div className="App">
-          <Navbar onSearch={handleSearch} />
-          {/* Search results component */}
-          <Search searchResults={searchResults} />
-          <Routes>
-            <Route path="/Home" element={<Home />}></Route>
-            <Route path="/register" element={<Register />}></Route>
-            <Route path="/login" element={<Home />}></Route>
-            <Route path="/" element={<Dashboard />}></Route>
-            <Route path="/Mens Fashion" element={<MensFashion />}></Route>
-          </Routes>
-        </div>
+        {/* Search results component */}
+        {/* <Search searchResults={searchResults} /> */}
+        <Routes>
+          <Route path="*" element={<Home />}></Route>
+
+          <Route path="/dashboard" element={<Dashboard />}></Route>
+          <Route path="/Mens Fashion" element={<MensFashion />}></Route>
+          <Route path="/register" element={<Register />}></Route>
+          <Route path="/login" element={<Home />}></Route>
+        </Routes>
       </Router>
     </div>
   );

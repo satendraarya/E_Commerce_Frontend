@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Slider from "../Navigation/Slider";
+import Navbar from "../Navigation/Navbar";
 
 function Dashboard() {
   const addItemToCart = () => {
@@ -53,6 +54,7 @@ function Dashboard() {
   return (
     <div>
       {/* <Button>Constom</Button> */}
+      <Navbar />
       <Slider />
       <h1 style={{ textAlign: "center" }}>
         <u>product</u>

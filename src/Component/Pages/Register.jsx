@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
-import './Register.css';
-import TextField from '@mui/material/TextField';
-import Breadcrumbs from '@mui/material/Breadcrumbs';
-import Link from '@mui/material/Link';
-import Logo from '../images/reglogo.png';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import "./Register.css";
+import TextField from "@mui/material/TextField";
+// import Breadcrumbs from "@mui/material/Breadcrumbs";
+// import Link from "@mui/material/Link";
+import Logo from "../images/reglogo.png";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    roleType: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    roleType: "",
   });
 
   const handleChange = (e) => {
@@ -27,11 +27,11 @@ function Register() {
 
   const sendRequest = async () => {
     try {
-      const response = await fetch('http://192.168.1.246:8080/api/signup', {
-        method: 'POST',
+      const response = await fetch("http://192.168.68.58:8080/api/signup", {
+        method: "POST",
         body: JSON.stringify(formData),
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       });
 
@@ -40,10 +40,10 @@ function Register() {
       }
 
       const data = await response.json();
-      console.log('Response data:', data);
+      console.log("Response data:", data);
       navigate("/login");
     } catch (err) {
-      console.error('Error:', err.message);
+      console.error("Error:", err.message);
     }
   };
 
@@ -52,12 +52,14 @@ function Register() {
     sendRequest();
   };
   return (
-    <div className='reg'>
-      <div className='header'>
-        <img src='logo.png' alt='' className='logooo'></img>
-        <h2 className='he-n'>E-cart</h2>
+    <div className="reg">
+      <div className="header" style={{ backgroundColor: "#007bff" }}>
+        <img src="logo.png" alt="" className="logooo"></img>
+        <h2 className="he-n" style={{ color: "white" }}>
+          E-cart
+        </h2>
       </div>
-      <div className='nav-he' role="presentation">
+      {/* <div className="nav-he" role="presentation">
         <Breadcrumbs aria-label="breadcrumb">
           <Link underline="hover" color="inherit" href="/">
             Home
@@ -66,10 +68,15 @@ function Register() {
             Register
           </Link>
         </Breadcrumbs>
-      </div>
+      </div> */}
+      {/* <div className="nav-he" role="presentation">
+        <Link underline="hover" color="inherit" href="">
+          Register
+        </Link>
+      </div> */}
 
-      <div className="registration">
-        <img src={Logo} alt='' className='logooo'></img>
+      <div className="registration" style={{ marginTop: "20px" }}>
+        <img src={Logo} alt="" className="logooo"></img>
         <h2>Registration</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
@@ -82,10 +89,10 @@ function Register() {
               maxRows={4}
               onChange={handleChange}
               required
-              label='First Name'
+              label="First Name"
             />
           </div>
-          <div className='form-group'>
+          <div className="form-group">
             <TextField
               multiline
               maxRows={4}
@@ -95,7 +102,7 @@ function Register() {
               value={formData.lastName}
               onChange={handleChange}
               required
-              label='Last Name'
+              label="Last Name"
             />
           </div>
           <div className="form-group">
@@ -108,7 +115,7 @@ function Register() {
               value={formData.email}
               onChange={handleChange}
               required
-              label='E-mail'
+              label="E-mail"
             />
           </div>
           <div className="form-group">
@@ -121,13 +128,13 @@ function Register() {
               value={formData.password}
               onChange={handleChange}
               required
-              label='Password'
+              label="Password"
             />
           </div>
           <div className="form-group">
             <label htmlFor="roletype">Role Type</label>
             <select
-              className='role-type'
+              className="role-type"
               id="roleType"
               name="roleType"
               value={formData.roleType}
@@ -140,13 +147,25 @@ function Register() {
             </select>
           </div>
           <br></br>
-          <button className='reg-b' type="submit">Register</button>
+          <button className="reg-b" type="submit">
+            Register
+          </button>
         </form>
+        <div
+          style={{
+            justifyContent: "space-between",
+            display: "flex",
+            marginTop: "50px",
+          }}
+        >
+          <p style={{ marginTop: "10px", color: "grays" }}>
+            User already Login
+          </p>
+          <a href="/login">login</a>
+        </div>
       </div>
     </div>
   );
 }
 
 export default Register;
-
-
